@@ -1,0 +1,116 @@
+/* Reset all */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-y: auto;
+  background-color: black;
+  font-family: Arial, sans-serif;
+  color: white;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container fixed and centered with perspective */
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transform-origin: center center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  width: 800px;
+  max-width: 95vw;
+  transform: translate(-50%, -50%);
+}
+
+/* Wheel container width + height */
+.wheel-container {
+  width: 100%;
+  height: auto;
+  max-height: 90vw;
+  position: relative;
+}
+
+/* Wheel sized to container, smooth full rotation */
+#wheel {
+  width: 100%;
+  max-width: 100vw;
+  height: auto;
+  max-height: 85vw;
+  animation: spin 10s linear infinite;
+  transform-origin: center center;
+  backface-visibility: hidden;
+}
+
+/* Full 360deg spin */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* App title starts hidden and scaled down */
+#appTitle {
+  visibility: hidden;
+  position: fixed;
+  top: 10%; /* Initial position above wheel */
+  left: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(0);
+  font-size: 3rem;
+  color: rgb(251, 156, 3);
+  font-weight: bold;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 101;
+  transition: none;
+}
+
+/* Spacer for scrollable space */
+.spacer {
+  width: 100%;
+  height: 300vh;
+  background: transparent;
+}
+
+/* Button styling */
+#startReadingBtn {
+  position: fixed;
+  top: 70%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  color: #FFD700;
+  background: transparent;
+  border: 2px solid #FFD700;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+  z-index: 170;
+}
+
+#startReadingBtn:hover {
+  background-color: #FFD700;
+  color: black;
+}
