@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Astrology Reading - Astrology AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: #FFD700;
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      min-height: 100vh;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 5px #FFD700, 0 0 10px #FFA500;
+      text-align: center;
+    }
+    h3 {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+      text-shadow: 0 0 3px #FFD700;
+      text-align: center;
+    }
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      text-align: center;
+      margin: 0.5rem 0;
+    }
+    .ai-response {
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      max-width: 600px;
+      box-shadow: 0 0 10px #FFD700;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+    a.try-again {
+      margin-top: 2rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #FFD700;
+      text-decoration: none;
+      border: 2px solid #FFD700;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+      display: inline-block;
+      cursor: pointer;
+    }
+    a.try-again:hover {
+      background-color: #FFD700;
+      color: black;
+      text-decoration: none;
+    }
+    .premium-message {
+      max-width: 600px;
+      text-align: center;
+      font-size: 1.3rem;
+      margin-top: 3rem;
+      color: #f7f8ef;
+    }
+    .premium-message a {
+      font-weight: 700;
+      color: #FFD700;
+      text-decoration: none;
+    }
+    .premium-message a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 650px) {
+      p, .ai-response {
+        max-width: 90vw;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  {% if premium %}
+    <div class="premium-message">
+      <h2>Upgrade Required</h2>
+      <p>Your free astrology prediction limit has been reached.</p>
+      <p>Please purchase the <a href="/premium">premium plan</a> to continue getting personalized astrology readings.</p>
+    </div>
+  {% else %}
+    <h2>Astrology Result for {{ name }}</h2>
+    <p>Date of Birth: {{ date }}</p>
+    <p>Time of Birth: {{ time }}</p>
+    <p>Place of Birth: {{ place }}</p>
+    <h3>AI Astrology Prediction:</h3>
+    <div class="ai-response">{{ ai_response }}</div>
+    <a href="/form" class="try-again">Try another reading</a>
+  {% endif %}
+</body>
+</html>
