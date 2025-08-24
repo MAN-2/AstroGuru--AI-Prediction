@@ -10,7 +10,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates= Jinja2Templates(directory="temp")
 
-DEBUG_MODE = True # Set this to False in production
+DEBUG_MODE = True # for one time question cookie ,
 
 @app.get("/", response_class=HTMLResponse) #starting
 async def read_index(request:Request):
@@ -33,7 +33,7 @@ async def submit(request:Request,
     if not DEBUG_MODE:
         used_free = request.cookies.get("used_free")
     if used_free == "true":
-        # Already used free request, show premium upsell
+        #  free request, show premium 
         context = {
             "request": request,
             "premium": True
@@ -53,7 +53,7 @@ async def submit(request:Request,
         "premium":False
     }
     response = templates.TemplateResponse("results.html", context)
-    response.set_cookie(key="used_free", value="true", max_age=60*60*24*30)  # 30 days
+    response.set_cookie(key="used_free", value="true", max_age=60*60*24*30)  
     return response
 
 
@@ -62,3 +62,4 @@ async def submit(request:Request,
 if __name__=="__main__":
     import uvicorn
     uvicorn.run("main:app", reload=True)
+
