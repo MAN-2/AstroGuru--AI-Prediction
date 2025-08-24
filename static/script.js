@@ -52,7 +52,7 @@ const tl = gsap.timeline({
   }
 });
 
-// Animate wheel down and rotate to pedestal
+
 tl.to(".container", {
   duration: 1,
   top: "85%",
@@ -60,16 +60,16 @@ tl.to(".container", {
   ease: "power1.inOut",
 });
 
-// Animate app title fading and scaling in
+
 tl.to("#appTitle", {
   duration: 1,
   top: "40%",
   scale: 4,
   opacity: 1,
   ease: "power1.inOut",
-}, "<"); // start simultaneously with previous
+}, "<"); 
 
-// Animate wheel back to upright, move to right side
+
 tl.to(".container", {
   duration: 1,
   top: "60%",
@@ -81,7 +81,7 @@ tl.to(".container", {
   delay: 0.2,
 });
 
-// Animate app title scaling down and moving above button
+
 tl.to("#appTitle", {
   duration: 0.8,
   top: "35%",
@@ -90,7 +90,7 @@ tl.to("#appTitle", {
   ease: "power1.inOut",
 }, "<");
 
-// Reveal button with fade in and display
+
 tl.to(btn, {
   duration: 0.8,
   opacity: 1,
@@ -101,7 +101,8 @@ tl.to(btn, {
   left: "86%",
 }, "-=0.4");
 
-// Button click navigates to /form
+
 btn.addEventListener("click", () => {
   window.location.href = "/form";
 });
+
